@@ -16,21 +16,22 @@
             <div>
                 <h1 class="logo-name">TC(A)</h1>
             </div>
-            <h3>Welcome to TC(A)</h3>
-            <p>Security and Identity Management Solutions
-            </p>
-            <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="cekLogin.php" method="post">
+            <h3>TC(A) Registration</h3>
+            <form class="m-t" role="form" action="cekDaftar.php" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name" required="" name="name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" required="" name="email">
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Username" required="" name="username">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Password" required="" name="password">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-                <a href="#"><small>Forgot password?</small></a>
-                <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="daftar.php">Create an account</a>
+                <button type="submit" class="btn btn-primary block full-width m-b">Create Account</button>
+                <a class="btn btn-sm btn-white btn-block" href="login.php">Login</a>
             </form>
             <p class="m-t"> <small>TC(A) &copy; 2015</small> </p>
         </div>
