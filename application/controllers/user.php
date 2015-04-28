@@ -18,6 +18,20 @@ class User extends CI_Controller
 		$data['judul'] = "Registration";
 		$this->load->view('register',$data);
 	}
+
+	function insertUser()
+	{
+		$this->load->model('akun');
+		$data = array
+		(
+			'nama' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password')
+		);
+		$this->akun->insertAkun($data);
+		$this->register();
+	}
 }
 
 /* End of file user.php */

@@ -39,7 +39,7 @@
                 }
             ?>
             
-            <form class="m-t" role="form" action="#" method="post">
+            <form class="m-t" role="form" action="<?php echo site_url('user/insertUser'); ?>" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name" required="" name="name">
                 </div>
