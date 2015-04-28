@@ -19,6 +19,12 @@ class User extends CI_Controller
 		$this->load->view('register',$data);
 	}
 
+	function home()
+	{
+		$data['judul'] = "Home";
+		$this->load->view('home',$data);
+	}
+
 	function insertUser()
 	{
 		$this->load->model('akun');
@@ -29,8 +35,17 @@ class User extends CI_Controller
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')
 		);
-		$this->akun->insertAkun($data);
-		$this->register();
+
+		if($this->akun->insertAkun($data))
+		{
+			$this->session->set_flashdata('success','Anda Berhasil Terdaftar!');
+		}
+		else
+		{
+			$this->session->set_flashdata('error','Anda Gagal Terdaftar!');
+		}
+
+		return redirect('user/register');
 	}
 }
 

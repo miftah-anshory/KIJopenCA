@@ -19,21 +19,26 @@
             <h3>TC(A) Registration</h3>
             
             <?php
-                if(isset($_GET['status']) && $_GET['status']=="ok")
+                $flash = $this->session->flashdata('success');
+                if(!empty($flash))
                 {
                     ?>
                     <div class='alert alert-dismissable alert-success'>
                         <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                        Anda Berhasil Terdaftar!
+                        <?php echo $flash; ?>
                     </div>
                     <?php
                 }
-                else if(isset($_GET['status']) && $_GET['status']=="gagal")
+
+                unset($flash);
+                $flash = $this->session->flashdata('error');
+                
+                if(!empty($flash))
                 {
                     ?>
                     <div class='alert alert-dismissable alert-danger'>
                         <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                        Anda Gagal Terdaftar!
+                        <?php echo $flash; ?>
                     </div>
                     <?php
                 }
