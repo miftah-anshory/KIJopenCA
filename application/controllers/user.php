@@ -21,8 +21,27 @@ class User extends CI_Controller
 
 	function home()
 	{
-		$data['judul'] = "Home";
-		$this->load->view('home',$data);
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$username = $session_data['username'];
+
+			$data['judul'] = "Home";
+			$this->load->view('home',$data);
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
+	function logout()
+	{
+		$this->load->library('session');
+		$this->session->sess_destroy();
+		redirect('user', 'refresh');
 	}
 
 	function insertUser()

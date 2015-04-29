@@ -55,17 +55,20 @@
                     <input type="text" class="form-control" placeholder="Username" required="" name="username">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="" name="password">
+                    <input type="password" class="form-control" placeholder="Password" required="" name="password" id="pass1">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Create Account</button>
-                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Re-type Password" required="" name="rePassword" id="pass2" onkeyup="checkPass(); return false;">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b" id="submit">Create Account</button>
                 <a class="btn btn-sm btn-white btn-block" href="<?php echo base_url(); ?>">Login</a>
             </form>
             <p class="m-t"> <small>TC(A) &copy; 2015</small> </p>
         </div>
     </div>
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/checkPass.js"></script>
+    <script src="<?php echo base_url(); ?>js/jquery-2.1.1.js"></script>
+    <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
 </body>
 
 </html>

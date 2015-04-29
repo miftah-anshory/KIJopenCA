@@ -19,7 +19,7 @@ class Verifikasi extends CI_Controller {
       
       if($this->form_validation->run() == FALSE)
       {
-        redirect('login');
+        redirect('user');
       }
 
       else
@@ -31,7 +31,7 @@ class Verifikasi extends CI_Controller {
 
         else
         {  
-          redirect('login');
+          redirect('user');
         }
       }
     }

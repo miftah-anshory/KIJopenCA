@@ -42,7 +42,7 @@
                         <a href="#"><i class="fa fa-download"></i> <span class="nav-label">Download</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
+                        <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
                     </li>
                 </ul>
             </div>
