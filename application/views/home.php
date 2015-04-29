@@ -73,7 +73,12 @@
                         </div>
                         <div class="ibox-content">
                             <p>
-                                TC(A) adalah sebuah certification authority di mana ia bertugas untuk mengeluarkan sertifikat digital. Sebuah sertifikat digital menyatakan kepemilikan kunci publik dengan nama pelanggan pada sertifikat tersebut. TC(A) merupakan start up, sehingga kepercayaan yang diberikan masih belum terlalu tinggi dan akan menjadi tinggi setelah beberapa tahun ke depan.
+                                TC(A) adalah sebuah certification authority di mana ia bertugas untuk mengeluarkan sertifikat digital. Sebuah sertifikat digital menyatakan kepemilikan kunci publik dengan nama pelanggan pada sertifikat tersebut. TC(A) merupakan start up, sehingga kepercayaan yang diberikan masih belum terlalu tinggi dan akan menjadi tinggi setelah beberapa tahun ke depan.<br><br>
+                                Cara Mendapatkan Sertikat Digital:
+                                <br>1.
+                                <br>2.
+                                <br>3.
+                                <br>4.
                             </p>
                         </div>
                     </div>

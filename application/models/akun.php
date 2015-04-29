@@ -16,10 +16,10 @@ class Akun extends CI_Model
 
 	public function login($username, $password)
 	{
-		$this -> db -> select('NRP, PASSWORD_MHS');
-		$this -> db -> from('mahasiswa');
-		$this -> db -> where('NRP', $nrp);
-		$this -> db -> where('PASSWORD_MHS', $password);
+		$this -> db -> select('username, password');
+		$this -> db -> from('user');
+		$this -> db -> where('username', $username);
+		$this -> db -> where('password', $password);
 		$this -> db -> limit(1);
 		 
 		$query = $this -> db -> get();

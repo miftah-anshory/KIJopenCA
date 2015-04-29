@@ -20,7 +20,7 @@
             <p>Security and Identity Management Solutions
             </p>
             <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="#" method="post">
+            <form class="m-t" role="form" action="<?php echo site_url('verifikasi'); ?>" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Username" required="" name="username">
                 </div>
