@@ -79,6 +79,48 @@ class User extends CI_Controller
 		}
 	}
 
+	function createCA()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$username = $session_data['username'];
+
+			$this->load->model('akun');
+			$data['akun'] = $this->akun->getAkun($username);
+
+			$data['judul'] = "Create CA";
+			$this->load->view('createCA',$data);
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
+	function downloadCA()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$username = $session_data['username'];
+
+			$this->load->model('akun');
+			$data['akun'] = $this->akun->getAkun($username);
+
+			$data['judul'] = "Download CA";
+			$this->load->view('downloadCA',$data);
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
 	function logout()
 	{
 		$this->load->library('session');
@@ -133,6 +175,36 @@ class User extends CI_Controller
 		}
 
 		return redirect('user/editProfile');
+	}
+
+	function insertCA()
+	{
+		$this->load->model('akun');
+		$data = array
+		(
+			'iduser' => $this->input->post('idUser'),
+			'nama_user' => $this->input->post('nameCA'),
+			'email_user' => $this->input->post('emailCA'),
+			'kodenegara' => $this->input->post('kodeNegara'),
+			'provinsi_user' => $this->input->post('provinsiCA'),
+			'kota_user' => $this->input->post('kotaCA'),
+			'namaorganisasi' => $this->input->post('organisasi_nama'),
+			'unitorganisasi' => $this->input->post('organisasi_unit'),
+			'challengepassword' => $this->input->post('chPass'),
+			'optionalcompany' => $this->input->post('optionalComp'),
+			'status' => $this->input->post('0')
+		);
+
+		if($this->akun->insertDataCA($data))
+		{
+			$this->session->set_flashdata('success','Data Sertifikat Berhasil Dimasukkan!');
+		}
+		else
+		{
+			$this->session->set_flashdata('error','Data Sertifikat Gagal Dimasukkan!');
+		}
+
+		return redirect('user/createCA');		
 	}
 }
 

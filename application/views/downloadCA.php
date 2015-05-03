@@ -40,10 +40,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
+                        <a href="<?php echo base_url(); ?>user/createCA"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
+                        <a href="<?php echo base_url(); ?>user/downloadCA"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>

@@ -40,10 +40,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
+                        <a href="<?php echo base_url(); ?>user/createCA"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
+                        <a href="<?php echo base_url(); ?>user/downloadCA"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
@@ -128,37 +128,37 @@
                                     }
                                 ?>
                                 <div class="form-group"><label class="col-lg-2 control-label">Username</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="text" placeholder="<?php echo $user?>" class="form-control" name="username">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="text" placeholder="<?php echo $name?>" class="form-control" name="nameUpdate">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="email" placeholder="<?php echo $email?>" class="form-control" name="email">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Address</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="text" placeholder="<?php echo $alamat?>" class="form-control" name="alamat">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">City</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="text" placeholder="<?php echo $kota?>" class="form-control" name="kota">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">State</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="text" placeholder="<?php echo $provinsi?>" class="form-control" name="provinsi">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Phone</label>
-                                    <div class="col-lg-10">
+                                    <div class="col-lg-6">
                                         <input type="text" placeholder="<?php echo $telepon?>" class="form-control" name="telepon">
                                     </div>
                                 </div>

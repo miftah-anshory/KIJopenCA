@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,10 +42,10 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
+                        <a href="<?php echo base_url(); ?>user/createCA"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
+                        <a href="<?php echo base_url(); ?>user/downloadCA"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
@@ -65,16 +67,13 @@
             </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-sm-12">
-                        <h2>User Profile</h2>
+                        <h2>Create Your Certificate</h2>
                         <ol class="breadcrumb">
                         <li>
                             <a href="<?php echo base_url(); ?>">Dashboard</a>
                         </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li class="active">
-                            <strong>Edit Profile</strong>
+                            <strong>Create CA</strong>
                         </li>
                     </ol>
                     </div>
@@ -84,7 +83,7 @@
                     <div class="wrapper wrapper-content">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Edit Profile</h5>
+                                <h5>Certificate Form</h5>
                             </div>
 
                             <?php
@@ -114,57 +113,62 @@
                             ?>
                             
                             <div class="ibox-content">
-                            <form class="form-horizontal" method="post" action="#" role="form">
+                            <form class="form-horizontal" method="post" action="<?php echo site_url('user/insertCA'); ?>" role="form">
                                 <?php
                                     foreach($akun as $row)
                                     {
-                                        $user = $row->USERNAME;
-                                        $name = $row->NAMA;
-                                        $email = $row->EMAIL;
-                                        $alamat = $row->ALAMAT;
-                                        $kota = $row->KOTA;
-                                        $provinsi = $row->PROVINSI;
-                                        $telepon = $row->TELEPON;
+                                        $id = $row->IDUSER;
                                     }
                                 ?>
-                                <div class="form-group"><label class="col-lg-2 control-label">Username</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $user?>" class="form-control" name="username">
-                                    </div>
-                                </div>
+                                <input required type="hidden" class="form-control" name="idUser" value="<?php echo $id;?>"/>
                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $name?>" class="form-control" name="nameUpdate">
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Name" class="form-control" name="nameCA" required="">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10">
-                                        <input type="email" placeholder="<?php echo $email?>" class="form-control" name="email">
+                                    <div class="col-lg-6">
+                                        <input type="email" placeholder="Email" class="form-control" name="emailCA" required="">
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Address</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $alamat?>" class="form-control" name="alamat">
+                                <div class="form-group"><label class="col-lg-2 control-label">Country Code</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Country Code Example: ID" class="form-control" name="kodeNegara" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Province</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Province" class="form-control" name="provinsiCA" required="">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">City</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $kota?>" class="form-control" name="kota">
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="City" class="form-control" name="kotaCA" required="">
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">State</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $provinsi?>" class="form-control" name="provinsi">
+                                <div class="form-group"><label class="col-lg-2 control-label">Organization Name</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Organization Name Example: ITS" class="form-control" name="organisasi_nama" required="">
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Phone</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $telepon?>" class="form-control" name="telepon">
+                                <div class="form-group"><label class="col-lg-2 control-label">Organization Unit</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Organization Unit Example: T. Informatika" class="form-control" name="organisasi_unit" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Challenge Password</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Challenge Password" class="form-control" name="chPass" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Optional Company</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Optional Company Example: LP" class="form-control" name="optionalComp" required="">
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label"></label>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-primary block full-width m-b">Save</button>
+                                        <button type="submit" class="btn btn-primary block full-width m-b">Create</button>
                                     </div>
                                 </div>
                             </form>

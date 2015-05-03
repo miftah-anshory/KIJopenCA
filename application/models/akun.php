@@ -14,6 +14,18 @@ class Akun extends CI_Model
 		}
 	}
 
+	public function insertDataCA($data)
+	{
+		if($this->db->insert('ca', $data))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	public function getAkun($username)
 	{
 		$data['user.username'] = $username;

@@ -32,18 +32,8 @@
                             TC(A)
                         </div>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Profile</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
-                            <li><a href="<?php echo base_url(); ?>user/editProfile">Edit Profile</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>user/createCA"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>user/downloadCA"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
+                    <li class="active">
+                        <a href="<?php echo base_url(); ?>user"><i class="fa fa-edit"></i> <span class="nav-label">Verification</span></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
@@ -57,7 +47,7 @@
                 <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
                     <ul class="nav navbar-top-links navbar-left" style="margin-left: 25px">
                         <li>
-                            <a href="<?php echo base_url(); ?>user/home"><h4><span class="m-r-sm text-muted welcome-message">TC(A) Keamanan Informasi dan Jaringan 2015</span></h4></a>
+                            <a href="<?php echo base_url(); ?>admin"><h4><span class="m-r-sm text-muted welcome-message">TC(A) Keamanan Informasi dan Jaringan 2015</span></h4></a>
                         </li>
                     </ul>
 
@@ -65,7 +55,7 @@
             </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-sm-12">
-                        <h2>Selamat Datang di TC(A) Keamanan Informasi dan Jaringan 2015</h2>
+                        <h2>Welcome Admin!</h2>
                     </div>
                 </div>
             <div class="row">
@@ -73,12 +63,31 @@
                     <div class="wrapper wrapper-content">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Tentang TC(A)</h5>
+                                <h5>List of Certificate Applicants</h5>
                             </div>
                             <div class="ibox-content">
-                                <p>
-                                    TC(A) adalah sebuah certification authority di mana ia bertugas untuk mengeluarkan sertifikat digital. Sebuah sertifikat digital menyatakan kepemilikan kunci publik dengan nama pelanggan pada sertifikat tersebut. TC(A) merupakan start up, sehingga kepercayaan yang diberikan masih belum terlalu tinggi dan akan menjadi tinggi setelah beberapa tahun ke depan.
-                                </p>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Number</th>
+                                        <th class="text-center">Username</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Organization</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">miftah</td>
+                                        <td class="text-center">miftah.anshory12@gmail.com</td>
+                                        <td class="text-center">ITS</td>
+                                        <td class="text-center">Pending</td>
+                                        <td class="text-center"><span class="fa fa-check text-navy" title="Accept"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
