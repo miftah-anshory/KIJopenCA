@@ -69,7 +69,6 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-center">Number</th>
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Organization</th>
@@ -78,14 +77,47 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">Miftahuddin Al Anshory</td>
-                                        <td class="text-center">miftah.anshory12@gmail.com</td>
-                                        <td class="text-center">ITS</td>
-                                        <td class="text-center">Pending</td>
-                                        <td class="text-center"><span class="fa fa-check text-navy" title="Accept"></span></td>
-                                    </tr>
+                                        <?php
+                                            foreach($ca as $row)
+                                            {
+                                                echo '<tr>';
+                                                echo '<td class="text-center">';
+                                                echo $name = $row->NAMA_USER;
+                                                echo '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                echo $email = $row->EMAIL_USER . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                echo $organization = $row->NAMAORGANISASI . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                $status = $row->STATUS;
+                                                if($status == 0)
+                                                {
+                                                    $tandaStatus = "Pending";
+                                                    echo $tandaStatus;
+                                                }
+
+                                                else
+                                                {
+                                                    $tandaStatus = "Accepted";
+                                                    echo $tandaStatus;
+                                                }
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                if($status == 0)
+                                                {
+                                                    echo '<a href="#" title="Accept"><i class="fa fa-check"></i></a>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<a href="#" title="Reject"><i class="fa fa-times"></i></a>';
+                                                }
+                                                echo '</td>';
+                                                echo '</tr>';
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

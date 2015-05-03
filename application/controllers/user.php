@@ -27,8 +27,19 @@ class User extends CI_Controller
 			$data['username'] = $session_data['username'];
 			$username = $session_data['username'];
 
-			$data['judul'] = "Home";
-			$this->load->view('home',$data);
+			if($username == "admin")
+			{
+				$this->load->model('akun');
+				$data['ca'] = $this->akun->getCAAdmin();
+				$data['judul'] = "Control Panel";
+				$this->load->view('controlPanel',$data);
+			}
+
+			else
+			{
+				$data['judul'] = "Home";
+				$this->load->view('home',$data);
+			}		
 		}
 
 		else

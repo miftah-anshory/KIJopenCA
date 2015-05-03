@@ -56,6 +56,14 @@ class Akun extends CI_Model
 		return $sql->result();
 	}
 
+	public function getCAAdmin()
+	{
+		$this->db->select('*');
+		$this->db->from('ca');
+		$sql = $this->db->get();
+		return $sql->result();
+	}
+
 	public function login($username, $password)
 	{
 		$this -> db -> select('username, password');
