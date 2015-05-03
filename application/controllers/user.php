@@ -37,6 +37,48 @@ class User extends CI_Controller
 		}
 	}
 
+	function viewProfile()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$username = $session_data['username'];
+
+			$this->load->model('akun');
+			$data['akun'] = $this->akun->getAkun($username);
+
+			$data['judul'] = "View Profile";
+			$this->load->view('viewProfile',$data);
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
+	function editProfile()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$username = $session_data['username'];
+
+			$this->load->model('akun');
+			$data['akun'] = $this->akun->getAkun($username);
+
+			$data['judul'] = "Edit Profile";
+			$this->load->view('editProfile',$data);
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
 	function logout()
 	{
 		$this->load->library('session');
@@ -65,6 +107,32 @@ class User extends CI_Controller
 		}
 
 		return redirect('user/register');
+	}
+
+	function updateUser()
+	{
+		$this->load->model('akun');
+		$data = array
+		(
+			'nama' => $this->input->post('nameUpdate'),
+			'email' => $this->input->post('email'),
+			'username' => $this->input->post('username'),
+			'alamat' => $this->input->post('alamat'),
+			'kota' => $this->input->post('kota'),
+			'provinsi' => $this->input->post('provinsi'),
+			'telepon' => $this->input->post('telepon')
+		);
+
+		if($this->akun->insertAkun($data))
+		{
+			$this->session->set_flashdata('success','Data Berhasil Diperbarui!');
+		}
+		else
+		{
+			$this->session->set_flashdata('error','Data Gagal Diperbarui!');
+		}
+
+		return redirect('user/editProfile');
 	}
 }
 
