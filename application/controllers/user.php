@@ -110,7 +110,8 @@ class User extends CI_Controller
 
 			$this->load->model('akun');
 			$data['akun'] = $this->akun->getAkun($username);
-
+			$iduser = (int)$this->akun->getIdUser($username)->iduser;
+			$data['ca'] = $this->akun->getCA($iduser);
 			$data['judul'] = "Download CA";
 			$this->load->view('downloadCA',$data);
 		}

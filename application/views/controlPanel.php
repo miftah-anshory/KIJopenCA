@@ -70,7 +70,7 @@
                                     <thead>
                                     <tr>
                                         <th class="text-center">Number</th>
-                                        <th class="text-center">Username</th>
+                                        <th class="text-center">Name</th>
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Organization</th>
                                         <th class="text-center">Status</th>
@@ -80,7 +80,7 @@
                                     <tbody>
                                     <tr>
                                         <td class="text-center">1</td>
-                                        <td class="text-center">miftah</td>
+                                        <td class="text-center">Miftahuddin Al Anshory</td>
                                         <td class="text-center">miftah.anshory12@gmail.com</td>
                                         <td class="text-center">ITS</td>
                                         <td class="text-center">Pending</td>

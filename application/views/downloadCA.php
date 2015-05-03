@@ -65,16 +65,13 @@
             </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-sm-12">
-                        <h2>User Profile</h2>
+                        <h2>Download Your Certificate</h2>
                         <ol class="breadcrumb">
                         <li>
                             <a href="<?php echo base_url(); ?>">Dashboard</a>
                         </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li class="active">
-                            <strong>Edit Profile</strong>
+                            <strong>Download CA</strong>
                         </li>
                     </ol>
                     </div>
@@ -84,87 +81,45 @@
                     <div class="wrapper wrapper-content">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Edit Profile</h5>
+                                <h5>Download Form</h5>
                             </div>
 
-                            <?php
-                                $flash = $this->session->flashdata('success');
-                                if(!empty($flash))
-                                {
-                                    ?>
-                                    <div class='alert alert-dismissable alert-success'>
-                                        <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                                        <?php echo $flash; ?>
-                                    </div>
-                                    <?php
-                                }
-
-                                unset($flash);
-                                $flash = $this->session->flashdata('error');
-                                
-                                if(!empty($flash))
-                                {
-                                    ?>
-                                    <div class='alert alert-dismissable alert-danger'>
-                                        <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                                        <?php echo $flash; ?>
-                                    </div>
-                                    <?php
-                                }
-                            ?>
-                            
                             <div class="ibox-content">
-                            <form class="form-horizontal" method="post" action="#" role="form">
+                            <form class="form-horizontal">
                                 <?php
-                                    foreach($akun as $row)
+                                    foreach($ca as $row)
                                     {
-                                        $user = $row->USERNAME;
-                                        $name = $row->NAMA;
-                                        $email = $row->EMAIL;
-                                        $alamat = $row->ALAMAT;
-                                        $kota = $row->KOTA;
-                                        $provinsi = $row->PROVINSI;
-                                        $telepon = $row->TELEPON;
+                                        $name = $row->NAMA_USER;
+                                        $email = $row->EMAIL_USER;
+                                        $organization = $row->NAMAORGANISASI;
+                                        $status = $row->STATUS;
+                                    }
+
+                                    if($status == 0)
+                                    {
+                                        $tandaStatus = "Pending";
+                                    }
+
+                                    else
+                                    {
+                                        $tandaStatus = "Accepted";
                                     }
                                 ?>
-                                <div class="form-group"><label class="col-lg-2 control-label">Username</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $user?>" class="form-control" name="username">
-                                    </div>
-                                </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $name?>" class="form-control" name="nameUpdate">
-                                    </div>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $name; ?></p></div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10">
-                                        <input type="email" placeholder="<?php echo $email?>" class="form-control" name="email">
-                                    </div>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $email; ?></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Address</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $alamat?>" class="form-control" name="alamat">
-                                    </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Organization</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $organization; ?></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">City</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $kota?>" class="form-control" name="kota">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">State</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $provinsi?>" class="form-control" name="provinsi">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Phone</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" placeholder="<?php echo $telepon?>" class="form-control" name="telepon">
-                                    </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Status</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $tandaStatus; ?></p></div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label"></label>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-primary block full-width m-b">Save</button>
+                                        <button type="button" class="btn btn-primary block full-width m-b">Download</button>
                                     </div>
                                 </div>
                             </form>
