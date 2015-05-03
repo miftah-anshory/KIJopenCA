@@ -32,10 +32,10 @@
                             TC(A)
                         </div>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Profile</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
+                            <li class="active"><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
                             <li><a href="<?php echo base_url(); ?>user/editProfile">Edit Profile</a></li>
                         </ul>
                     </li>
@@ -65,7 +65,18 @@
             </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-sm-12">
-                        <h2>Selamat Datang di TC(A) Keamanan Informasi dan Jaringan 2015</h2>
+                        <h2>User Profile</h2>
+                        <ol class="breadcrumb">
+                        <li>
+                            <a href="<?php echo base_url(); ?>">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">Profile</a>
+                        </li>
+                        <li class="active">
+                            <strong>View Profile</strong>
+                        </li>
+                    </ol>
                     </div>
                 </div>
             <div class="row">
@@ -73,13 +84,45 @@
                     <div class="wrapper wrapper-content">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Tentang TC(A)</h5>
+                                <h5>Profile</h5>
                             </div>
                             <div class="ibox-content">
-                                <p>
-                                    TC(A) adalah sebuah certification authority di mana ia bertugas untuk mengeluarkan sertifikat digital. Sebuah sertifikat digital menyatakan kepemilikan kunci publik dengan nama pelanggan pada sertifikat tersebut. TC(A) merupakan start up, sehingga kepercayaan yang diberikan masih belum terlalu tinggi dan akan menjadi tinggi setelah beberapa tahun ke depan.
-                                </p>
-                            </div>
+                            <form class="form-horizontal">
+                                <?php
+                                    foreach($akun as $row)
+                                    {
+                                        $user = $row->USERNAME;
+                                        $name = $row->NAMA;
+                                        $email = $row->EMAIL;
+                                        $alamat = $row->ALAMAT;
+                                        $kota = $row->KOTA;
+                                        $provinsi = $row->PROVINSI;
+                                        $telepon = $row->TELEPON;
+                                    }
+                                ?>
+                                <div class="form-group"><label class="col-lg-2 control-label">Username</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $user; ?></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Name</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $name; ?></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Email</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $email; ?></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Address</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $alamat; ?></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">City</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $kota; ?></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">State</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $provinsi; ?></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Phone</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $telepon; ?></p></div>
+                                </div>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>

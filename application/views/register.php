@@ -63,6 +63,7 @@
                 <button type="submit" class="btn btn-primary block full-width m-b" id="submit">Create Account</button>
                 <a class="btn btn-sm btn-white btn-block" href="<?php echo base_url(); ?>">Login</a>
             </form>
+            
             <p class="m-t"> <small>TC(A) &copy; 2015</small> </p>
         </div>
     </div>
