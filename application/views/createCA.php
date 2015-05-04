@@ -119,6 +119,15 @@
                                     }
                                 ?>
                                 <input required type="hidden" class="form-control" name="idUser" value="<?php echo $id;?>"/>
+                                <div class="form-group"><label class="col-lg-2 control-label">Date</label>
+                                    <div class="col-lg-6">
+                                        <p class="form-control-static">
+                                            <?php
+                                                echo date("d/m/Y");
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
                                     <div class="col-lg-6">
                                         <input type="text" placeholder="Name" class="form-control" name="nameCA" required="">

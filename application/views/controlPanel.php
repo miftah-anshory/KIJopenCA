@@ -80,6 +80,7 @@
                                         <?php
                                             foreach($ca as $row)
                                             {
+                                                $idcreate = $row->IDCREATE;
                                                 echo '<tr>';
                                                 echo '<td class="text-center">';
                                                 echo $name = $row->NAMA_USER;
@@ -108,11 +109,11 @@
                                                 echo '<td class="text-center">';
                                                 if($status == 0)
                                                 {
-                                                    echo '<a href="#" title="Accept"><i class="fa fa-check"></i></a>';
+                                                    echo '<a href="'.base_url().'user/acceptCA/'.$idcreate.'" title="Accept"><i class="fa fa-check"></i></a>';
                                                 }
                                                 else
                                                 {
-                                                    echo '<a href="#" title="Reject"><i class="fa fa-times"></i></a>';
+                                                    echo '<a href="'.base_url().'user/rejectCA/'.$idcreate.'" title="Reject"><i class="fa fa-times"></i></a>';
                                                 }
                                                 echo '</td>';
                                                 echo '</tr>';

@@ -209,6 +209,8 @@ class User extends CI_Controller
 
 		if($this->akun->insertDataCA($data))
 		{
+			$lastId = $this->db->insert_id();
+			$this->generateCSR($data, $lastId);
 			$this->session->set_flashdata('success','Data Sertifikat Berhasil Dimasukkan!');
 		}
 		else
@@ -217,6 +219,89 @@ class User extends CI_Controller
 		}
 
 		return redirect('user/createCA');		
+	}
+
+	function test()
+	{
+		$csr = file_get_contents('certificate/24/csr.cert');
+		$priv = file_get_contents('certificate/24/private.cert');
+		$privca = file_get_contents('certificate/ca/private.cert');
+		$certca = file_get_contents('certificate/ca/cert.pem');
+		openssl_csr_sign($csr, $cacert, );
+		echo $priv;
+	}
+
+	function generateCSR($data, $lastId)
+	{
+		$user = 'tsaqova';
+		$dataCSR = array
+		(
+		    "countryName" => $data['kodenegara'],
+		    "stateOrProvinceName" => $data['provinsi_user'],
+		    "localityName" => $data['kota_user'],
+		    "organizationName" => $data['namaorganisasi'],
+		    "organizationalUnitName" => $data['unitorganisasi'],
+		    "commonName" => $data['nama_user'],
+		    "emailAddress" => $data['email_user']
+		);
+
+		$privKey = openssl_pkey_new();
+		$csr = openssl_csr_new($dataCSR, $privKey);
+		$saveDir = 'certificate/'.$lastId.'/';
+
+		if(!file_exists($saveDir))
+		{
+			mkdir($saveDir, 0777, true);
+		}
+		
+		$privkeyFileName = 'private.crt';
+		$csrFileName = 'csr.crt';
+		openssl_pkey_export_to_file($privKey, $saveDir.$privkeyFileName);
+		openssl_csr_export_to_file($csr, $saveDir.$csrFileName);
+	}
+
+	function acceptCA($idcreate)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$username = $session_data['username'];
+
+		if($username == "admin")
+		{
+			$this->load->model('akun');
+			$this->akun->acceptCA($idcreate);
+			$data['ca'] = $this->akun->getCAAdmin();
+			$data['judul'] = "Control Panel";
+			$this->load->view('controlPanel',$data);
+		}
+
+		else
+		{
+			$data['judul'] = "Home";
+			$this->load->view('home',$data);
+		}		
+	}
+
+	function rejectCA($idcreate)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$username = $session_data['username'];
+
+		if($username == "admin")
+		{
+			$this->load->model('akun');
+			$this->akun->rejectCA($idcreate);
+			$data['ca'] = $this->akun->getCAAdmin();
+			$data['judul'] = "Control Panel";
+			$this->load->view('controlPanel',$data);
+		}
+
+		else
+		{
+			$data['judul'] = "Home";
+			$this->load->view('home',$data);
+		}
 	}
 }
 

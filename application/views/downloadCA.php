@@ -89,6 +89,8 @@
                                 <?php
                                     foreach($ca as $row)
                                     {
+                                        $id = $row->IDCREATE;
+                                        $date = $row->TANGGAL;
                                         $name = $row->NAMA_USER;
                                         $email = $row->EMAIL_USER;
                                         $organization = $row->NAMAORGANISASI;
@@ -105,6 +107,9 @@
                                         $tandaStatus = "Accepted";
                                     }
                                 ?>
+                                <div class="form-group"><label class="col-lg-2 control-label">Date</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo date('F d, Y', strtotime($date)); ?></p></div>
+                                </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
                                     <div class="col-lg-10"><p class="form-control-static"><?php echo $name; ?></p></div>
                                 </div>
@@ -117,11 +122,24 @@
                                 <div class="form-group"><label class="col-lg-2 control-label">Status</label>
                                     <div class="col-lg-10"><p class="form-control-static"><?php echo $tandaStatus; ?></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label"></label>
-                                    <div class="col-lg-2">
-                                        <button type="button" class="btn btn-primary block full-width m-b">Download</button>
-                                    </div>
-                                </div>
+                                <?php
+                                    if($status == 0)
+                                    {
+                                        echo '<div class="form-group"><label class="col-lg-2 control-label"></label>';
+                                        echo '<div class="col-lg-2">';
+                                        echo '<button type="button" class="btn btn-danger block full-width m-b">Download</button>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                    else
+                                    {
+                                        echo '<div class="form-group"><label class="col-lg-2 control-label"></label>';
+                                        echo '<div class="col-lg-2">';
+                                        echo '<a href="#"><button type="button" class="btn btn-primary block full-width m-b">Download</button></a>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                ?>
                             </form>
                         </div>
                         </div>

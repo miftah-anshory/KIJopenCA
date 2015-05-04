@@ -64,6 +64,18 @@ class Akun extends CI_Model
 		return $sql->result();
 	}
 
+	public function acceptCA($idcreate)
+	{
+		$status = 1;
+		$this->db->update('ca', array('status' => $status), array('idcreate' => $idcreate));
+	}
+	
+	public function rejectCA($idcreate)
+	{
+		$status = 0;
+		$this->db->update('ca', array('status' => $status), array('idcreate' => $idcreate));
+	}
+
 	public function login($username, $password)
 	{
 		$this -> db -> select('username, password');
