@@ -227,7 +227,7 @@ class User extends CI_Controller
 		$priv = file_get_contents('certificate/24/private.cert');
 		$privca = file_get_contents('certificate/ca/private.cert');
 		$certca = file_get_contents('certificate/ca/cert.pem');
-		openssl_csr_sign($csr, $cacert, );
+		openssl_csr_sign($csr, $cacert);
 		echo $priv;
 	}
 
