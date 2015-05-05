@@ -40,10 +40,10 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Certificate</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="<?php echo base_url(); ?>user/createCA">Add CA</a></li>
-                            <li><a href="<?php echo base_url(); ?>user/listCA">List CA</a></li>
+                            <li class="active"><a href="<?php echo base_url(); ?>user/createCA">Request Certificate</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/listCA">List Request</a></li>
                         </ul>
                     </li>
                     <li>
@@ -72,10 +72,10 @@
                                 <a href="<?php echo base_url(); ?>">Dashboard</a>
                             </li>
                             <li>
-                                Create CA
+                                Certificate
                             </li>
                             <li>
-                                <strong>Add CA</strong>
+                                <strong>Request Certificate</strong>
                             </li>
                         </ol>
                     </div>
@@ -115,7 +115,7 @@
                             ?>
                             
                             <div class="ibox-content">
-                            <form class="form-horizontal" method="post" action="<?php echo site_url('user/insertCA'); ?>" role="form">
+                            <?php echo form_open_multipart('user/insertCA');?>
                                 <?php
                                     foreach($akun as $row)
                                     {
@@ -123,7 +123,8 @@
                                     }
                                 ?>
                                 <input required type="hidden" class="form-control" name="idUser" value="<?php echo $id;?>"/>
-                                <div class="form-group"><label class="col-lg-2 control-label">Date</label>
+                                <input required type="hidden" class="form-control" name="userName" value="<?php echo $username;?>"/>
+<!--                                <div class="form-group"><label class="col-lg-2 control-label">Date</label>
                                     <div class="col-lg-6">
                                         <p class="form-control-static">
                                             <?php
@@ -132,7 +133,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Name</label>
+                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
                                     <div class="col-lg-6">
                                         <input type="text" placeholder="Name" class="form-control" name="nameCA" required="">
                                     </div>
@@ -176,13 +177,18 @@
                                     <div class="col-lg-6">
                                         <input type="text" placeholder="Optional Company Example: LP" class="form-control" name="optionalComp" required="">
                                     </div>
+                                </div> -->
+                                <div class="form-group"><label class="col-lg-2 control-label">Uplaod CSR</label>
+                                    <div class="col-lg-6">
+                                        <input type="file" name="fileCSR" required="">
+                                    </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label"></label>
                                     <div class="col-lg-2">
-                                        <button type="submit" class="btn btn-primary block full-width m-b">Create</button>
+                                        <button type="submit" class="btn btn-primary block full-width m-b">Submit request</button>
                                     </div>
                                 </div>
-                            </form>
+                            <?php echo form_close(); ?>
                         </div>
                         </div>
                     </div>

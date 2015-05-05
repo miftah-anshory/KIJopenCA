@@ -28,7 +28,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * Create CAPTCHA
+ * CertificatePTCHA
  *
  * @access	public
  * @param	array	array of data for the CAPTCHA

@@ -69,10 +69,12 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-center">Date</th>
+<!--                                         <th class="text-center">Date</th>
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Email</th>
-                                        <th class="text-center">Organization</th>
+                                        <th class="text-center">Organization</th> -->
+                                        <th class="text-center">Username</th>
+                                        <th class="text-center">CSR</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
@@ -84,18 +86,15 @@
                                                 $idcreate = $row->IDCREATE;
                                                 $date = date('F d, Y', strtotime($row->TANGGAL));
                                                 echo '<tr>';
-                                                echo '<td class="text-center">';
-                                                echo $date . '<br>';
-                                                echo '</td>';
+                                                // echo '<td class="text-center">';
+                                                // echo $date . '<br>';
+                                                // echo '</td>';
                                                 echo '<td class="text-center">';
                                                 echo $name = $row->NAMA_USER;
                                                 echo '<br>';
                                                 echo '</td>';
                                                 echo '<td class="text-center">';
-                                                echo $email = $row->EMAIL_USER . '<br>';
-                                                echo '</td>';
-                                                echo '<td class="text-center">';
-                                                echo $organization = $row->NAMAORGANISASI . '<br>';
+                                                echo '<a href="'.base_url('/user/downloadCSR/'.$idcreate).'">Download</a><br>';
                                                 echo '</td>';
                                                 echo '<td class="text-center">';
                                                 $status = $row->STATUS;

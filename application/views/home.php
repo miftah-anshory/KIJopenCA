@@ -40,10 +40,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Certificate</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url(); ?>user/createCA">Add CA</a></li>
-                            <li><a href="<?php echo base_url(); ?>user/listCA">List CA</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/createCA">Request Certificate</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/listCA">List Request</a></li>
                         </ul>
                     </li>
                     <li>

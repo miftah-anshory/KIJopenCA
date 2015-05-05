@@ -106,7 +106,7 @@ class User extends CI_Controller
 			$this->load->model('akun');
 			$data['akun'] = $this->akun->getAkun($username);
 
-			$data['judul'] = "Add CA";
+			$data['judul'] = "Request Certificate";
 			$this->load->view('createCA',$data);
 		}
 
@@ -128,7 +128,7 @@ class User extends CI_Controller
 			$data['akun'] = $this->akun->getAkun($username);
 			$iduser = (int)$this->akun->getIdUser($username)->iduser;
 			$data['ca'] = $this->akun->getCA($iduser);
-			$data['judul'] = "List CA";
+			$data['judul'] = "List Request";
 			$this->load->view('listCA',$data);
 		}
 
@@ -138,15 +138,32 @@ class User extends CI_Controller
 		}
 	}
 
-	function downloadCA()
+	function downloadCA($idcreate)
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$username = $session_data['username'];
-			$data['judul'] = "Download CA";
-			$this->load->view('downloadCA',$data);
+			$this->load->helper('download');
+			$data = file_get_contents("certificate/$idcreate.crt");
+			$name = 'certificate.crt';
+			force_download($name, $data); 
+			redirect('user', 'refresh');
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
+	function downloadCSR($idcreate)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$this->load->helper('download');
+			$data = file_get_contents("certificate/$idcreate.csr");
+			$name = $idcreate.'.csr';
+			force_download($name, $data); 
+			redirect('user', 'refresh');
 		}
 
 		else
@@ -217,23 +234,37 @@ class User extends CI_Controller
 		$data = array
 		(
 			'iduser' => $this->input->post('idUser'),
-			'nama_user' => $this->input->post('nameCA'),
-			'email_user' => $this->input->post('emailCA'),
-			'kodenegara' => $this->input->post('kodeNegara'),
-			'provinsi_user' => $this->input->post('provinsiCA'),
-			'kota_user' => $this->input->post('kotaCA'),
-			'namaorganisasi' => $this->input->post('organisasi_nama'),
-			'unitorganisasi' => $this->input->post('organisasi_unit'),
-			'challengepassword' => $this->input->post('chPass'),
-			'optionalcompany' => $this->input->post('optionalComp'),
+			 'nama_user' => $this->input->post('userName'),
+			// 'email_user' => $this->input->post('emailCA'),
+			// 'kodenegara' => $this->input->post('kodeNegara'),
+			// 'provinsi_user' => $this->input->post('provinsiCA'),
+			// 'kota_user' => $this->input->post('kotaCA'),
+			// 'namaorganisasi' => $this->input->post('organisasi_nama'),
+			// 'unitorganisasi' => $this->input->post('organisasi_unit'),
+			// 'challengepassword' => $this->input->post('chPass'),
+			// 'optionalcompany' => $this->input->post('optionalComp'),
 			'status' => $this->input->post('0')
 		);
 
 		if($this->akun->insertDataCA($data))
 		{
 			$lastId = $this->db->insert_id();
-			$this->generateCSR($data, $lastId);
-			$this->session->set_flashdata('success','Data Sertifikat Berhasil Dimasukkan!');
+			$config['upload_path'] = 'certificate';
+			$config['allowed_types'] = '*';
+			$config['max_size']	= '1000';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+			$config['file_name'] = $lastId;
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('fileCSR'))
+			{
+				$this->session->set_flashdata('error', $this->upload->display_errors());
+			}
+			else
+			{
+				$this->session->set_flashdata('success','Data Sertifikat Berhasil Dimasukkan!');
+			}
 		}
 		else
 		{
@@ -287,6 +318,11 @@ class User extends CI_Controller
 		$this->load->model('akun');
 		$this->akun->acceptCA($idcreate);
 		$data['ca'] = $this->akun->getCAAdmin();
+		$cacert = file_get_contents("certificate/ca/certificate.crt");
+		$cakey = array(file_get_contents("certificate/ca/private.key"), "kijtca");
+		$csrdata = file_get_contents('certificate/'.$idcreate.".csr");
+		$usercert = openssl_csr_sign($csrdata, $cacert, $cakey, 365);
+		openssl_x509_export_to_file($usercert, 'certificate/'.$idcreate.'.crt');
 		return redirect('user/adminHome');	
 	}
 

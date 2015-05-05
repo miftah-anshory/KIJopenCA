@@ -32,19 +32,18 @@
                             TC(A)
                         </div>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Profile</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
                             <li><a href="<?php echo base_url(); ?>user/editProfile">Edit Profile</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Certificate</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url(); ?>user/createCA">Request Certificate</a></li>
-                            <li><a href="<?php echo base_url(); ?>user/listCA">List Request</a></li>
-                        </ul>
+                        <a href="<?php echo base_url(); ?>user/createCA"><i class="fa fa-edit"></i> <span class="nav-label">Certificate</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="<?php echo base_url(); ?>user/downloadCA"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
@@ -66,16 +65,13 @@
             </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-sm-12">
-                        <h2>User Profile</h2>
+                        <h2>Download Your Certificate</h2>
                         <ol class="breadcrumb">
                         <li>
                             <a href="<?php echo base_url(); ?>">Dashboard</a>
                         </li>
-                        <li>
-                            Profile
-                        </li>
-                        <li>
-                            <strong>View Profile</strong>
+                        <li class="active">
+                            <strong>Download CA</strong>
                         </li>
                     </ol>
                     </div>
@@ -85,24 +81,34 @@
                     <div class="wrapper wrapper-content">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Profile</h5>
+                                <h5>Download Form</h5>
                             </div>
+
                             <div class="ibox-content">
                             <form class="form-horizontal">
                                 <?php
-                                    foreach($akun as $row)
+                                    foreach($ca as $row)
                                     {
-                                        $user = $row->USERNAME;
-                                        $name = $row->NAMA;
-                                        $email = $row->EMAIL;
-                                        $alamat = $row->ALAMAT;
-                                        $kota = $row->KOTA;
-                                        $provinsi = $row->PROVINSI;
-                                        $telepon = $row->TELEPON;
+                                        $id = $row->IDCREATE;
+                                        $date = $row->TANGGAL;
+                                        $name = $row->NAMA_USER;
+                                        $email = $row->EMAIL_USER;
+                                        $organization = $row->NAMAORGANISASI;
+                                        $status = $row->STATUS;
+                                    }
+
+                                    if($status == 0)
+                                    {
+                                        $tandaStatus = "Pending";
+                                    }
+
+                                    else
+                                    {
+                                        $tandaStatus = "Accepted";
                                     }
                                 ?>
-                                <div class="form-group"><label class="col-lg-2 control-label">Username</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $user; ?></p></div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Date</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo date('F d, Y', strtotime($date)); ?></p></div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
                                     <div class="col-lg-10"><p class="form-control-static"><?php echo $name; ?></p></div>
@@ -110,18 +116,30 @@
                                 <div class="form-group"><label class="col-lg-2 control-label">Email</label>
                                     <div class="col-lg-10"><p class="form-control-static"><?php echo $email; ?></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Address</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $alamat; ?></p></div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Organization</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $organization; ?></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">City</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $kota; ?></p></div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Status</label>
+                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $tandaStatus; ?></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">State</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $provinsi; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Phone</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $telepon; ?></p></div>
-                                </div>
+                                <?php
+                                    if($status == 0)
+                                    {
+                                        echo '<div class="form-group"><label class="col-lg-2 control-label"></label>';
+                                        echo '<div class="col-lg-2">';
+                                        echo '<button type="button" class="btn btn-danger block full-width m-b">Download</button>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                    else
+                                    {
+                                        echo '<div class="form-group"><label class="col-lg-2 control-label"></label>';
+                                        echo '<div class="col-lg-2">';
+                                        echo '<a href="#"><button type="button" class="btn btn-primary block full-width m-b">Download</button></a>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                ?>
                             </form>
                         </div>
                         </div>

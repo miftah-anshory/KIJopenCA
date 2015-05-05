@@ -40,10 +40,10 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Certificate</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url(); ?>user/createCA">Add CA</a></li>
-                            <li class="active"><a href="<?php echo base_url(); ?>user/listCA">List CA</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/createCA">Request Certificate</a></li>
+                            <li class="active"><a href="<?php echo base_url(); ?>user/listCA">List Request</a></li>
                         </ul>
                     </li>
                     <li>
@@ -72,10 +72,10 @@
                                 <a href="<?php echo base_url(); ?>">Dashboard</a>
                             </li>
                             <li>
-                                Create CA
+                                Certificate
                             </li>
                             <li>
-                                <strong>List CA</strong>
+                                <strong>List Request</strong>
                             </li>
                         </ol>
                     </div>
@@ -91,10 +91,13 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-center">Date</th>
+<!--                                         <th class="text-center">Date</th>
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Email</th>
-                                        <th class="text-center">Organization</th>
+                                        <th class="text-center">Organization</th> -->
+                                        <th class="text-center">Request ID</th>
+                                        <!-- <th class="text-center">Email</th>
+                                        <th class="text-center">Organization</th> -->
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
@@ -106,17 +109,14 @@
                                                 $date = date('F d, Y', strtotime($row->TANGGAL));
                                                 echo '<tr>';
                                                 echo '<td class="text-center">';
-                                                echo $date . '<br>';
+                                                echo $name = $row->IDCREATE . '<br>';
                                                 echo '</td>';
-                                                echo '<td class="text-center">';
-                                                echo $name = $row->NAMA_USER . '<br>';
-                                                echo '</td>';
-                                                echo '<td class="text-center">';
-                                                echo $email = $row->EMAIL_USER . '<br>';
-                                                echo '</td>';
-                                                echo '<td class="text-center">';
-                                                echo $organization = $row->NAMAORGANISASI . '<br>';
-                                                echo '</td>';
+                                                // echo '<td class="text-center">';
+                                                // echo $email = $row->EMAIL_USER . '<br>';
+                                                // echo '</td>';
+                                                // echo '<td class="text-center">';
+                                                // echo $organization = $row->NAMAORGANISASI . '<br>';
+                                                // echo '</td>';
                                                 echo '<td class="text-center">';
                                                 $status = $row->STATUS;
                                                 if($status == 0)
@@ -126,18 +126,18 @@
                                                 }
                                                 else
                                                 {
-                                                    $tandaStatus = "Accepted";
+                                                    $tandaStatus = "Approved";
                                                     echo $tandaStatus;
                                                 }
                                                 echo '</td>';
                                                 echo '<td class="text-center">';
                                                 if($status == 0)
                                                 {
-                                                    echo '<button type="button" class="btn btn-danger btn-sm">Download</button>';
+                                                    //echo '<button type="button" class="btn btn-danger btn-sm">Download</button>';
                                                 }
                                                 else
                                                 {
-                                                    echo '<a href="#"><button type="button" class="btn btn-primary btn-sm">Download</button></a>';
+                                                    echo "<a href='".base_url('/user/downloadCA/'.$row->IDCREATE)."'>Download Certificate</a>";
                                                 }
                                                 echo '</td>';
                                                 echo '</tr>';
