@@ -49,6 +49,11 @@ class User extends CI_Controller
 	{
 		$this->load->model('akun');
 		$data['ca'] = $this->akun->getCAAdmin();
+		$data['iduser'] = $this->akun->getIDuserCA();
+		foreach ($data['iduser'] as $key => $iduser)
+		{
+			$data['username'][] = $this->akun->getUsername($iduser->iduser);
+		}
 		$data['judul'] = "Control Panel";
 		$this->load->view('controlPanel',$data);
 	}
@@ -234,15 +239,7 @@ class User extends CI_Controller
 		$data = array
 		(
 			'iduser' => $this->input->post('idUser'),
-			 'nama_user' => $this->input->post('userName'),
-			// 'email_user' => $this->input->post('emailCA'),
-			// 'kodenegara' => $this->input->post('kodeNegara'),
-			// 'provinsi_user' => $this->input->post('provinsiCA'),
-			// 'kota_user' => $this->input->post('kotaCA'),
-			// 'namaorganisasi' => $this->input->post('organisasi_nama'),
-			// 'unitorganisasi' => $this->input->post('organisasi_unit'),
-			// 'challengepassword' => $this->input->post('chPass'),
-			// 'optionalcompany' => $this->input->post('optionalComp'),
+			'nama_user' => $this->input->post('userName'),
 			'status' => $this->input->post('0')
 		);
 

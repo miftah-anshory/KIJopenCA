@@ -69,11 +69,8 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-<!--                                         <th class="text-center">Date</th>
-                                        <th class="text-center">Name</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Organization</th> -->
-                                        <th class="text-center">Username</th>
+                                        <th class="text-center">Date</th>
+                                        <th class="text-center">ID User</th>
                                         <th class="text-center">CSR</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Aksi</th>
@@ -86,12 +83,11 @@
                                                 $idcreate = $row->IDCREATE;
                                                 $date = date('F d, Y', strtotime($row->TANGGAL));
                                                 echo '<tr>';
-                                                // echo '<td class="text-center">';
-                                                // echo $date . '<br>';
-                                                // echo '</td>';
                                                 echo '<td class="text-center">';
-                                                echo $name = $row->NAMA_USER;
-                                                echo '<br>';
+                                                echo $date . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                echo $id = $row->IDUSER . '<br>';
                                                 echo '</td>';
                                                 echo '<td class="text-center">';
                                                 echo '<a href="'.base_url('/user/downloadCSR/'.$idcreate).'">Download</a><br>';

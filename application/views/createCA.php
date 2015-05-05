@@ -114,7 +114,6 @@
                                 }
                             ?>
                             
-                            <div class="ibox-content">
                             <?php echo form_open_multipart('user/insertCA');?>
                                 <?php
                                     foreach($akun as $row)
@@ -124,61 +123,7 @@
                                 ?>
                                 <input required type="hidden" class="form-control" name="idUser" value="<?php echo $id;?>"/>
                                 <input required type="hidden" class="form-control" name="userName" value="<?php echo $username;?>"/>
-<!--                                <div class="form-group"><label class="col-lg-2 control-label">Date</label>
-                                    <div class="col-lg-6">
-                                        <p class="form-control-static">
-                                            <?php
-                                                echo date("d/m/Y");
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                 <div class="form-group"><label class="col-lg-2 control-label">Name</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Name" class="form-control" name="nameCA" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-6">
-                                        <input type="email" placeholder="Email" class="form-control" name="emailCA" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Country Code</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Country Code Example: ID" class="form-control" name="kodeNegara" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Province</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Province" class="form-control" name="provinsiCA" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">City</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="City" class="form-control" name="kotaCA" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Organization Name</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Organization Name Example: ITS" class="form-control" name="organisasi_nama" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Organization Unit</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Organization Unit Example: T. Informatika" class="form-control" name="organisasi_unit" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Challenge Password</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Challenge Password" class="form-control" name="chPass" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Optional Company</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Optional Company Example: LP" class="form-control" name="optionalComp" required="">
-                                    </div>
-                                </div> -->
-                                <div class="form-group"><label class="col-lg-2 control-label">Uplaod CSR</label>
+                                <div class="form-group"><label class="col-lg-2 control-label">Upload CSR</label>
                                     <div class="col-lg-6">
                                         <input type="file" name="fileCSR" required="">
                                     </div>
@@ -189,7 +134,6 @@
                                     </div>
                                 </div>
                             <?php echo form_close(); ?>
-                        </div>
                         </div>
                     </div>
                 </div>

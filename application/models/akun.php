@@ -56,6 +56,25 @@ class Akun extends CI_Model
 		return $sql->result();
 	}
 
+	public function getIDuserCA()
+	{
+		$this->db->distinct();
+		$this->db->select('iduser');
+		$this->db->from('ca');
+		$sql = $this->db->get();
+		return $sql->result();
+	}
+
+	public function getUsername($iduser)
+	{
+		$data['ca.iduser'] = $iduser;
+		$this->db->select('user.username');
+		$this->db->join('user', 'user.iduser = ca.iduser');
+		$this->db->where($data);
+		$sql = $this->db->get('ca');
+		return $sql->result();
+	}
+
 	public function getCAAdmin()
 	{
 		$this->db->select('*');

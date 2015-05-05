@@ -91,13 +91,8 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-<!--                                         <th class="text-center">Date</th>
-                                        <th class="text-center">Name</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Organization</th> -->
+                                        <th class="text-center">Date</th>
                                         <th class="text-center">Request ID</th>
-                                        <!-- <th class="text-center">Email</th>
-                                        <th class="text-center">Organization</th> -->
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
@@ -109,14 +104,11 @@
                                                 $date = date('F d, Y', strtotime($row->TANGGAL));
                                                 echo '<tr>';
                                                 echo '<td class="text-center">';
+                                                echo $date . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
                                                 echo $name = $row->IDCREATE . '<br>';
                                                 echo '</td>';
-                                                // echo '<td class="text-center">';
-                                                // echo $email = $row->EMAIL_USER . '<br>';
-                                                // echo '</td>';
-                                                // echo '<td class="text-center">';
-                                                // echo $organization = $row->NAMAORGANISASI . '<br>';
-                                                // echo '</td>';
                                                 echo '<td class="text-center">';
                                                 $status = $row->STATUS;
                                                 if($status == 0)
@@ -133,7 +125,8 @@
                                                 echo '<td class="text-center">';
                                                 if($status == 0)
                                                 {
-                                                    //echo '<button type="button" class="btn btn-danger btn-sm">Download</button>';
+
+                                                    echo '-';
                                                 }
                                                 else
                                                 {
