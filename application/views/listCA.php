@@ -32,18 +32,18 @@
                             TC(A)
                         </div>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Profile</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/viewProfile">View Profile</a></li>
                             <li><a href="<?php echo base_url(); ?>user/editProfile">Edit Profile</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="<?php echo base_url(); ?>user/createCA">Add CA</a></li>
-                            <li><a href="<?php echo base_url(); ?>user/listCA">List CA</a></li>
+                            <li class="active"><a href="<?php echo base_url(); ?>user/listCA">List CA</a></li>
                         </ul>
                     </li>
                     <li>
@@ -66,18 +66,18 @@
             </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-sm-12">
-                        <h2>User Profile</h2>
+                        <h2>List of Your Certificate Submissions</h2>
                         <ol class="breadcrumb">
-                        <li>
-                            <a href="<?php echo base_url(); ?>">Dashboard</a>
-                        </li>
-                        <li>
-                            Profile
-                        </li>
-                        <li>
-                            <strong>View Profile</strong>
-                        </li>
-                    </ol>
+                            <li>
+                                <a href="<?php echo base_url(); ?>">Dashboard</a>
+                            </li>
+                            <li>
+                                Create CA
+                            </li>
+                            <li>
+                                <strong>List CA</strong>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             <div class="row">
@@ -85,45 +85,52 @@
                     <div class="wrapper wrapper-content">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Profile</h5>
+                                <h5>List of Submissions</h5>
                             </div>
                             <div class="ibox-content">
-                            <form class="form-horizontal">
-                                <?php
-                                    foreach($akun as $row)
-                                    {
-                                        $user = $row->USERNAME;
-                                        $name = $row->NAMA;
-                                        $email = $row->EMAIL;
-                                        $alamat = $row->ALAMAT;
-                                        $kota = $row->KOTA;
-                                        $provinsi = $row->PROVINSI;
-                                        $telepon = $row->TELEPON;
-                                    }
-                                ?>
-                                <div class="form-group"><label class="col-lg-2 control-label">Username</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $user; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Name</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $name; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $email; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Address</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $alamat; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">City</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $kota; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">State</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $provinsi; ?></p></div>
-                                </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Phone</label>
-                                    <div class="col-lg-10"><p class="form-control-static"><?php echo $telepon; ?></p></div>
-                                </div>
-                            </form>
-                        </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Organization</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            foreach($ca as $row)
+                                            {
+                                                echo '<tr>';
+                                                echo '<td class="text-center">';
+                                                echo $name = $row->NAMA_USER . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                echo $email = $row->EMAIL_USER . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                echo $organization = $row->NAMAORGANISASI . '<br>';
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                $status = $row->STATUS;
+                                                if($status == 0)
+                                                {
+                                                    $tandaStatus = "Pending";
+                                                    echo $tandaStatus;
+                                                }
+
+                                                else
+                                                {
+                                                    $tandaStatus = "Accepted";
+                                                    echo $tandaStatus;
+                                                }
+                                                echo '</td>';
+                                                echo '</tr>';
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

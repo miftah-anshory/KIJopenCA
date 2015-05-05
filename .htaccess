@@ -1,6 +1,4 @@
 RewriteEngine on
-RewriteRule ^([a-z0-9_-]+)\.html$ index.php/page/$1 [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond $1 !^(index\.php|asset|robots\.txt)
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteBase /kijopenca
+RewriteCond $1 !^(index\.php|css|font-awesome|img|js|robots\.txt)
+RewriteRule ^(.*)$ /kijopenca/index.php/$1 [L]

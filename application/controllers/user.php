@@ -101,8 +101,30 @@ class User extends CI_Controller
 			$this->load->model('akun');
 			$data['akun'] = $this->akun->getAkun($username);
 
-			$data['judul'] = "Create CA";
+			$data['judul'] = "Add CA";
 			$this->load->view('createCA',$data);
+		}
+
+		else
+		{
+			redirect('user', 'refresh');
+		}
+	}
+
+	function listCA()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$username = $session_data['username'];
+
+			$this->load->model('akun');
+			$data['akun'] = $this->akun->getAkun($username);
+			$iduser = (int)$this->akun->getIdUser($username)->iduser;
+			$data['ca'] = $this->akun->getCA($iduser);
+			$data['judul'] = "List CA";
+			$this->load->view('listCA',$data);
 		}
 
 		else

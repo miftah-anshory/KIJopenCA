@@ -40,10 +40,11 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="<?php echo base_url(); ?>user/createCA"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>user/downloadCA"><i class="fa fa-download"></i> <span class="nav-label">Download CA</span></a>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Create CA</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="active"><a href="<?php echo base_url(); ?>user/createCA">Add CA</a></li>
+                            <li><a href="<?php echo base_url(); ?>user/listCA">List CA</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span> </a>
@@ -67,13 +68,16 @@
                     <div class="col-sm-12">
                         <h2>Create Your Certificate</h2>
                         <ol class="breadcrumb">
-                        <li>
-                            <a href="<?php echo base_url(); ?>">Dashboard</a>
-                        </li>
-                        <li class="active">
-                            <strong>Create CA</strong>
-                        </li>
-                    </ol>
+                            <li>
+                                <a href="<?php echo base_url(); ?>">Dashboard</a>
+                            </li>
+                            <li>
+                                Create CA
+                            </li>
+                            <li>
+                                <strong>Add CA</strong>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             <div class="row">
