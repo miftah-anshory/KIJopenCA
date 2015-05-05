@@ -91,6 +91,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
+                                        <th class="text-center">Date</th>
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Organization</th>
@@ -102,7 +103,11 @@
                                         <?php
                                             foreach($ca as $row)
                                             {
+                                                $date = date('F d, Y', strtotime($row->TANGGAL));
                                                 echo '<tr>';
+                                                echo '<td class="text-center">';
+                                                echo $date . '<br>';
+                                                echo '</td>';
                                                 echo '<td class="text-center">';
                                                 echo $name = $row->NAMA_USER . '<br>';
                                                 echo '</td>';
