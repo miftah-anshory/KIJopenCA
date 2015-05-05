@@ -29,10 +29,7 @@ class User extends CI_Controller
 
 			if($username == "admin")
 			{
-				$this->load->model('akun');
-				$data['ca'] = $this->akun->getCAAdmin();
-				$data['judul'] = "Control Panel";
-				$this->load->view('controlPanel',$data);
+				$this->adminHome();
 			}
 
 			else
@@ -46,6 +43,14 @@ class User extends CI_Controller
 		{
 			redirect('user', 'refresh');
 		}
+	}
+
+	function adminHome()
+	{
+		$this->load->model('akun');
+		$data['ca'] = $this->akun->getCAAdmin();
+		$data['judul'] = "Control Panel";
+		$this->load->view('controlPanel',$data);
 	}
 
 	function viewProfile()
@@ -140,11 +145,6 @@ class User extends CI_Controller
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$username = $session_data['username'];
-
-			$this->load->model('akun');
-			$data['akun'] = $this->akun->getAkun($username);
-			$iduser = (int)$this->akun->getIdUser($username)->iduser;
-			$data['ca'] = $this->akun->getCA($iduser);
 			$data['judul'] = "Download CA";
 			$this->load->view('downloadCA',$data);
 		}
@@ -284,46 +284,18 @@ class User extends CI_Controller
 
 	function acceptCA($idcreate)
 	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$username = $session_data['username'];
-
-		if($username == "admin")
-		{
-			$this->load->model('akun');
-			$this->akun->acceptCA($idcreate);
-			$data['ca'] = $this->akun->getCAAdmin();
-			$data['judul'] = "Control Panel";
-			$this->load->view('controlPanel',$data);
-		}
-
-		else
-		{
-			$data['judul'] = "Home";
-			$this->load->view('home',$data);
-		}		
+		$this->load->model('akun');
+		$this->akun->acceptCA($idcreate);
+		$data['ca'] = $this->akun->getCAAdmin();
+		return redirect('user/adminHome');	
 	}
 
 	function rejectCA($idcreate)
 	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$username = $session_data['username'];
-
-		if($username == "admin")
-		{
-			$this->load->model('akun');
-			$this->akun->rejectCA($idcreate);
-			$data['ca'] = $this->akun->getCAAdmin();
-			$data['judul'] = "Control Panel";
-			$this->load->view('controlPanel',$data);
-		}
-
-		else
-		{
-			$data['judul'] = "Home";
-			$this->load->view('home',$data);
-		}
+		$this->load->model('akun');
+		$this->akun->rejectCA($idcreate);
+		$data['ca'] = $this->akun->getCAAdmin();
+		return redirect('user/adminHome');
 	}
 }
 

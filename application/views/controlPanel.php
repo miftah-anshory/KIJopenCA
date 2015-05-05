@@ -23,7 +23,7 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="text-align: center;">
                                 <span class="clear">
                                     <span class="block m-t-xs">
-                                        <strong class="font-bold"><?php echo $username; ?></strong>
+                                        <strong class="font-bold">admin</strong>
                                     </span>
                                 </span>
                             </a>
