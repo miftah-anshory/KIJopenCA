@@ -95,6 +95,7 @@
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Organization</th>
                                         <th class="text-center">Status</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -118,11 +119,20 @@
                                                     $tandaStatus = "Pending";
                                                     echo $tandaStatus;
                                                 }
-
                                                 else
                                                 {
                                                     $tandaStatus = "Accepted";
                                                     echo $tandaStatus;
+                                                }
+                                                echo '</td>';
+                                                echo '<td class="text-center">';
+                                                if($status == 0)
+                                                {
+                                                    echo '<button type="button" class="btn btn-danger btn-sm">Download</button>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<a href="#"><button type="button" class="btn btn-primary btn-sm">Download</button></a>';
                                                 }
                                                 echo '</td>';
                                                 echo '</tr>';
